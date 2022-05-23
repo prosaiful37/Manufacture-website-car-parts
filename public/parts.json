@@ -1,0 +1,50 @@
+[
+    {
+        "name" : "Rotiform SFO – Custom Forged",
+        "img" : "https://i.ibb.co/txgbT67/parts1.webp",
+        "description" : "The average car is made up of over 30,000 separate parts, including the nuts and bolts. Overtime all of these parts will wear down and require ",
+        "minimum_order" : "10",
+        "available_quantity" : "20",
+        "price": "375"
+    },
+    {
+        "name" : "Replace – OE Replacement Engine",
+        "img" : "https://i.ibb.co/rbvYG0X/parts2.webp",
+        "description" : "The average car is made up of over 30,000 separate parts, including the nuts and bolts. Overtime all of these parts will wear down and require ",
+        "minimum_order" : "12",
+        "available_quantity" : "25",
+        "price": "1260"
+    },
+    {
+        "name" : "Bosal – Catalytic Converter Gauge Kit",
+        "img" : "https://i.ibb.co/P4ChBQ1/parts3.webp",
+        "description" : "The average car is made up of over 30,000 separate parts, including the nuts and bolts. Overtime all of these parts will wear down and require ",
+        "minimum_order" : "11",
+        "available_quantity" : "25",
+        "price": "120"
+    },
+    {
+        "name" : "Grant – Banjo Style Steering Wheel",
+        "img" : "https://i.ibb.co/fGKMZTM/parts4.webp",
+        "description" : "The average car is made up of over 30,000 separate parts, including the nuts and bolts. Overtime all of these parts will wear down and require ",
+        "minimum_order" : "16",
+        "available_quantity" : "30",
+        "price": "215"
+    },
+    {
+        "name" : "Braum – Elite-X Sport Seats Gauge Kit",
+        "img" : "https://i.ibb.co/ryfXL2Q/parts5.webp",
+        "description" : "The average car is made up of over 30,000 separate parts, including the nuts and bolts. Overtime all of these parts will wear down and require ",
+        "minimum_order" : "10",
+        "available_quantity" : "32",
+        "price": "729"
+    },
+    {
+        "name" : "Tayoto Switchback & Sequential Headlights",
+        "img" : "https://i.ibb.co/6Rp27vp/parts6.webp",
+        "description" : "The average car is made up of over 30,000 separate parts, including the nuts and bolts. Overtime all of these parts will wear down and require ",
+        "minimum_order" : "9",
+        "available_quantity" : "24",
+        "price": "259"
+    }
+]
