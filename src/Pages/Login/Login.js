@@ -1,15 +1,48 @@
 import React from "react";
-
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
+import Loading from "../Shared/Loading/Loading";
 
 const Login = () => {
+    const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+    const navigate = useNavigate()
+    let errorMsg;
+
+    // use from hooks
   const {
     register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+
+  if (loading || gloading) {
+    return <Loading></Loading>;
+  }
+  
+ 
+  if (error || gerror ) {
+        return errorMsg = <p className="text-red"><small>{error?.message || gerror?.message }</small></p>
+
+
+  }
+
+  if (user || guser) {
+        navigate('/');
+    
+  }
+
+  //   form submit
+  const onSubmit = async (data) => {
+    await signInWithEmailAndPassword( data.email, data.password);
+    
+    
+  };
+
   return (
     <div className="flex h-screen justify-center items-center">
       <div class="hero min-h-screen bg-base-200">
@@ -85,13 +118,14 @@ const Login = () => {
                     </a>
                   </label>
                 </div>
+                {errorMsg}
                 <div class="form-control mt-6">
                   <button class="btn btn-primary">Login</button>
                 </div>
               </form>
               <p className="text-center"><small>New to Car Parts ? <Link className="text-primary" to="/signUp">Create New Account</Link> </small></p>
               <div class="divider">OR</div>
-              <button class="btn btn-outline btn-primary text-black">Continue with Google</button>
+              <button onClick={() => signInWithGoogle()} class="btn btn-outline btn-primary text-black">Continue with Google</button>
             </div>
           </div>
         </div>

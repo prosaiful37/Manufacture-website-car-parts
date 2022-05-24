@@ -1,8 +1,16 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo.png";
+import auth from "../../../firebase.init";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
+  // user logout
+  const logout = () => {
+    signOut(auth);
+  };
     const menuItems = (
         <>
           <li>
@@ -14,9 +22,6 @@ const Header = () => {
           <li>
             <Link to="/blog">Blog</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
     
     
           {/* {user && (
@@ -24,39 +29,39 @@ const Header = () => {
               <Link to="/dashboard">Dashboard</Link>
             </li>
           )} */}
-          {/* <li>
-            {user ? (
-              <div class="dropdown dropdown-end">
-                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                  <div class="w-10 rounded-full">
-                    <img src="https://api.lorem.space/image/face?hash=33791" />
-                  </div>
-                </label>
-                <ul
-                  tabindex="0"
-                  class="menu menu-compact dropdown-content mt-40 p-2 shadow bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <a className="justify-between">
-                      Profile
-                      <span class="badge">New</span>
-                    </a>
-                  </li>
-                  <li>
-                    <button onClick={logout} class="btn btn-ghost">
-                      Logout
-                    </button>
-                  </li>
-                </ul>
+          <li>
+        {user ? (
+          <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full">
+                <img src="https://api.lorem.space/image/face?hash=33791" />
               </div>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
-          </li> */}
+            </label>
+            <ul
+              tabindex="0"
+              class="menu menu-compact dropdown-content mt-40 p-2 shadow bg-secondary text-black rounded-box w-52"
+            >
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span class="badge">New</span>
+                </a>
+              </li>
+              <li>
+                <button onClick={logout} class="btn btn-ghost">
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
+      </li>
         </>
       );
   return (
-    <div class="navbar bg-base-100">
+    <div class="navbar bg-neutral text-white w-100 mx-auto ">
       <div class="navbar">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
