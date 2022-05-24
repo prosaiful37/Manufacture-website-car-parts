@@ -1,4 +1,3 @@
-import { TruckIcon } from "@heroicons/react/solid";
 import React from "react";
 
 import { useForm } from "react-hook-form";
@@ -16,6 +15,7 @@ const Login = () => {
       <div class="hero min-h-screen bg-base-200">
         <div class="hero-content flex-col lg:flex-row-reverse">
           <div class="card w-96 bg-base-100 shadow-xl">
+          <h3 className='text-neutral text-center font-bold py-5 text-3xl '> Login</h3>
             <div class="card-body">
               <form onSubmit={handleSubmit(onSubmit)} action="">
                 <div class="form-control">
