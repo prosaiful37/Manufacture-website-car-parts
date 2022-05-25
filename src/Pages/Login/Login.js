@@ -1,7 +1,7 @@
 import React from "react";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading/Loading";
 
@@ -10,6 +10,7 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
     const navigate = useNavigate()
+    const location = useLocation();
     let errorMsg;
 
     // use from hooks
@@ -19,6 +20,7 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
+  let from = location.state?.from?.pathname || "/";
 
   if (loading || gloading) {
     return <Loading></Loading>;
@@ -39,7 +41,7 @@ const Login = () => {
   //   form submit
   const onSubmit = async (data) => {
     await signInWithEmailAndPassword( data.email, data.password);
-    
+    navigate(from, { replace: true });
     
   };
 

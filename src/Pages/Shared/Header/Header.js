@@ -11,25 +11,26 @@ const Header = () => {
   const logout = () => {
     signOut(auth);
   };
-    const menuItems = (
-        <>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/blog">Blog</Link>
-          </li>
-    
-    
-          {/* {user && (
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-          )} */}
-          <li>
+  const menuItems = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/about">About</Link>
+      </li>
+      <li>
+        <Link to="/blog">Blog</Link>
+      </li>
+
+      {user && (
+        <li>
+          {/* <Link to="/dashboard">Dashboard</Link> */}
+
+          <Link to="/purchase">Purchase</Link>
+        </li>
+      )}
+      <li>
         {user ? (
           <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
@@ -58,8 +59,8 @@ const Header = () => {
           <Link to="/login">Login</Link>
         )}
       </li>
-        </>
-      );
+    </>
+  );
   return (
     <div class="navbar bg-neutral text-white w-100 mx-auto ">
       <div class="navbar">
@@ -87,13 +88,19 @@ const Header = () => {
             {menuItems}
           </ul>
         </div>
-        <a class="btn btn-ghost normal-case text-xl"><img width="100" height="100" src={logo} alt="" /></a>
+        <a class="btn btn-ghost normal-case text-xl">
+          <img width="100" height="100" src={logo} alt="" />
+        </a>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <label tabindex="1" for="dashboard-sidebar" class="btn btn-ghost lg:hidden">
+        <label
+          tabindex="1"
+          for="dashboard-sidebar"
+          class="btn btn-ghost lg:hidden"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"
@@ -109,7 +116,6 @@ const Header = () => {
             />
           </svg>
         </label>
-        
       </div>
     </div>
   );
