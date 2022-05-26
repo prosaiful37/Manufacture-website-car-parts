@@ -23,9 +23,11 @@ const Header = () => {
         <Link to="/blog">Blog</Link>
       </li>
 
-     {
-       user && <li><Link to="/dashboard">Dashboard</Link></li>
-     }
+      {user && (
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
       <li>
         {user ? (
           <div class="dropdown dropdown-end">
