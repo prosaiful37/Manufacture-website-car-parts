@@ -29,9 +29,7 @@ const PartsDetails = () => {
     const email = user.email;
     const address = user.address;
 
-    const order = {
-      img, partName, minOrder, aviableOrder, price, displayName, email, address
-    }
+    const order = { img, partName, minOrder, aviableOrder, price, displayName, email, address }
 
     fetch('http://localhost:5000/orders', {
       method: 'POST',
@@ -44,7 +42,7 @@ const PartsDetails = () => {
         toast('Order Added sucessful');
       }
       else{
-        toast.error('Your order not add')
+        toast.error('Your order not add');
       }
     } )
    
