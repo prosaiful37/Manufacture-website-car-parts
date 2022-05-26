@@ -9,7 +9,11 @@ import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/Shared/NotFound/NotFound";
 import Signup from "./Pages/Login/SignUp/Signup";
 import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
-import Purchase from "./Pages/Purchase/Purchase";
+import Purchase from "./Purchase/Purchase";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyOrder from "./Pages/Dashboard/MyOrder";
+import Review from "./Pages/Dashboard/Review";
+import MyProfile from "./Pages/Dashboard/MyProfile";
 
 function App() {
   return (
@@ -21,14 +25,28 @@ function App() {
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
+
         <Route
-          path="/purchase"
+          path="/purchase/:partsId"
           element={
             <RequireAuth>
               <Purchase></Purchase>
             </RequireAuth>
           }
         ></Route>
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard></Dashboard>
+            </RequireAuth>
+          }
+        >
+          <Route index element={<MyOrder></MyOrder>}></Route>
+          <Route path="review" element={<Review></Review>}></Route>
+          <Route path="profile" element={<MyProfile></MyProfile>}></Route>
+
+        </Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer className="max-w-full mx-auto px-12"></Footer>

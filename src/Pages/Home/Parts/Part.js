@@ -2,15 +2,15 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 
 const Part = ({ part }) => {
-  const { name, img, description, minimum_order, available_quantity, price } =
+  const { _id, name, img, description, minimum_order, available_quantity, price } =
     part;
     const navigate = useNavigate()
 
 
 
     // navigate to purchase page
-    const navigateTopurchase = () => {
-      navigate('/purchase')
+    const navigateTopurchase = (id) => {
+      navigate(`/purchase/${id}`)
     }
 
   return (
@@ -18,7 +18,7 @@ const Part = ({ part }) => {
       <figure class="px-10 pt-10">
         <img className="rounded"
           src={img}
-          alt="Shoes"
+          alt=""
         />
       </figure>
       <div class="card-body">
@@ -28,7 +28,7 @@ const Part = ({ part }) => {
         <p className="font-bold ">Avaiable-Quentity: <span className="text-primary">{available_quantity}</span> </p>
         <p className="font-bold ">Price: <span className="text-primary">${price}</span> </p>
         <div class="card-actions justify-end">
-            <button onClick={navigateTopurchase} class="btn btn-block btn-primary">Please Order</button>
+            <button onClick={() => navigateTopurchase(_id)} class="btn btn-block btn-primary">Please Order</button>
         </div>
       </div>
     </div>
