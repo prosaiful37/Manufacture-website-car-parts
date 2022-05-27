@@ -5,13 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading/Loading";
 import auth from "../../../firebase.init";
+import useToken from "../../../Hooks/useToken";
 
 const Signup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, uloading, uerror] = useUpdateProfile(auth);
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
-    const navigate = useNavigate()
+    const [token] = useToken(user || guser)
+    // const navigate = useNavigate()
     let errorMsg;
     // use from hooks
   const {
@@ -33,7 +35,7 @@ const Signup = () => {
   }
 
   if (user || guser) {
-        navigate('/');
+        // navigate('/');
     
   }
 
@@ -41,6 +43,7 @@ const Signup = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword( data.email, data.password);
     await updateProfile({ displayName: data.name });
+
     
   };
 

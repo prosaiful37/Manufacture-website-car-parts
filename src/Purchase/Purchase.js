@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../firebase.init";
 
 const Purchase = () => {
@@ -12,7 +13,7 @@ const Purchase = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setPart(data));
-  }, []);
+  }, [partsId]);
 
 
   const handleOrder = event => {
@@ -45,13 +46,12 @@ const Purchase = () => {
       body: JSON.stringify(order),
     })
     .then(res => res.json())
-    .then((data) =>{
+    .then((data) => {
       if(data.success ){
-        console.log('Order Added sucessful');
+        toast('Your Order Added successfull'); 
       }
-      else{
-        console.log('Your order not add');
-      }
+
+      setPart(data);
     })
 
   }
@@ -135,7 +135,9 @@ const Purchase = () => {
             <div class="form-control mt-6">
               <button class="btn btn-primary">Order Now</button>
             </div>
+            
           </form>
+          
         </div>
       </div>
     </div>
