@@ -13,6 +13,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyOrder from "./Pages/Dashboard/MyOrder";
 import Review from "./Pages/Dashboard/Review";
 import MyProfile from "./Pages/Dashboard/MyProfile";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -46,7 +47,9 @@ function App() {
           <Route path="profile" element={<MyProfile></MyProfile>}></Route>
 
         </Route>
+
         <Route path="*" element={<NotFound></NotFound>}></Route>
+        
       </Routes>
       <Footer className="max-w-full mx-auto px-12"></Footer>
     </div>
