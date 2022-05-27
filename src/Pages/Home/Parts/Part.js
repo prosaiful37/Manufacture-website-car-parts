@@ -9,8 +9,8 @@ const Part = ({ part }) => {
 
 
     // navigate to purchase page
-    const navigateTopurchase = (id) => {
-      navigate(`/purchase/${id}`)
+    const navigateTopurchase = id => {
+      navigate(`/purchase/${id}`);
     }
 
   return (
