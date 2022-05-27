@@ -61,9 +61,7 @@ const Blog = () => {
               3.03: How does prototypical inheritance work?
             </h2>
             <p className="text-lg">
-              React performance is good as frontend web-application development.
-              as per as good service provide react native app development. React
-              keeping component state local and anywhere in device necessary.{" "}
+             Inheritance and the prototype chain javaacript class-based languages . Prototype in javascript object have a special hidden property. Prototype show in devloper tools . {" "}
               <br />
               React image loading performance is lazy. React component is good
               per developer work simple. Windowing or list virtualization in
