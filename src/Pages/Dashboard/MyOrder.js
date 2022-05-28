@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
 
@@ -62,6 +63,7 @@ const MyOrder = () => {
               <th>Order</th>
               <th>Per-Price</th>
               <th>Parts-Image</th>
+              <th>Payments</th>
               <th>Remove-Orders</th>
             </tr>
           </thead>
@@ -76,12 +78,21 @@ const MyOrder = () => {
                   <img className="w-20 h-20" src={order.img} alt="" />
                 </td>
                 <td>
-                  <button
+                    {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className="btn btn-sm">Pay</button></Link>}
+                    {(order.price && order.paid) && <span className="btn btn-sm btn-seccess">Paid</span>}
+                    
+                      
+                </td>
+                <td> 
+                 
+                <button
                     onClick={() => handleDelete(order._id)}
-                    class="btn btn-active btn-ghost"
+                    class="btn btn-sm"
                   >
                     Delete
                   </button>
+                  
+                  
                 </td>
               </tr>
             ))}
