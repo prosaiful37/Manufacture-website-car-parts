@@ -9,14 +9,13 @@ const Purchase = () => {
   const { partsId } = useParams();
   const [part, setPart] = useState({});
   useEffect(() => {
-    const url = `http://localhost:5000/parts/${partsId}`;
+    const url = `https://thawing-oasis-18375.herokuapp.com/parts/${partsId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setPart(data));
   }, [partsId]);
 
-
-  const handleOrder = event => {
+  const handleOrder = (event) => {
     event.preventDefault();
     const img = part.img;
     const partName = part.name;
@@ -35,32 +34,30 @@ const Purchase = () => {
       orderId,
       name: user.displayName,
       email: user.email,
-      address
-    }
+      address,
+    };
 
-    fetch("http://localhost:5000/orders", {
-      method: 'POST',
+    fetch("https://thawing-oasis-18375.herokuapp.com/orders", {
+      method: "POST",
       headers: {
-        'content-type' : 'application/json',
+        "content-type": "application/json",
       },
       body: JSON.stringify(order),
     })
-    .then(res => res.json())
-    .then((data) => {
-      if(data.success ){
-        toast('Your Order Added successfull'); 
-      }
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          toast("Your Order Added successfull");
+        }
 
-      setPart(data);
-    })
-
-  }
-
+        setPart(data);
+      });
+  };
 
   return (
     <div>
       <div class="card-body w-1/3 rounded-3xl shadow-transparent my-5 border mx-auto">
-        <div >
+        <div>
           <figure class="px-10 pt-10">
             <img
               className="rounded"
@@ -135,9 +132,7 @@ const Purchase = () => {
             <div class="form-control mt-6">
               <button class="btn btn-primary">Order Now</button>
             </div>
-            
           </form>
-          
         </div>
       </div>
     </div>
@@ -145,4 +140,3 @@ const Purchase = () => {
 };
 
 export default Purchase;
-

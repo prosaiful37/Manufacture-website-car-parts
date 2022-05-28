@@ -1,14 +1,13 @@
-import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 // import { toast, ToastContainer } from 'react-toastify';
-import auth from '../firebase.init';
+import auth from "../firebase.init";
 
-const Orders = ({tool}) => {
-    const [user] = useAuthState(auth);
-    const { _id , name, minimum_order, available_quantity, price, img} = tool
+const Orders = ({ tool }) => {
+  const [user] = useAuthState(auth);
+  const { _id, name, minimum_order, available_quantity, price, img } = tool;
 
-
-      //handle order 
+  //handle order
   // const handleOrder = event => {
   //   event.preventDefault();
   //   const img = tool.img;
@@ -21,19 +20,19 @@ const Orders = ({tool}) => {
   //   const address = user.address;
   //   const orderId = tool._id;
 
-  //   const order = { 
+  //   const order = {
   //     img,
   //     partName,
   //     minOrder,
   //     aviableOrder,
   //     price,
   //     orderId,
-  //     name: user.displayName, 
-  //     email: user.email, 
-  //     address 
+  //     name: user.displayName,
+  //     email: user.email,
+  //     address
   //   }
 
-  //   fetch('http://localhost:5000/orders', {
+  //   fetch('https://thawing-oasis-18375.herokuapp.com/orders', {
   //     method: 'POST',
   //     headers: {
   //       'content-type' : 'application/json',
@@ -49,17 +48,9 @@ const Orders = ({tool}) => {
   //       console.log('Your order not add');
   //     }
   //   } )
-   
+
   // }
-    return (
-    <div>
-      
-    </div>
-     
-
-
-        
-    );
+  return <div></div>;
 };
 
 export default Orders;

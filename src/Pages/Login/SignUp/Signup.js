@@ -13,7 +13,7 @@ const Signup = () => {
     const [updateProfile, uloading, uerror] = useUpdateProfile(auth);
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
     const [token] = useToken(user || guser)
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     let errorMsg;
     // use from hooks
   const {
@@ -34,8 +34,8 @@ const Signup = () => {
 
   }
 
-  if (user || guser) {
-        // navigate('/');
+  if (token) {
+        navigate('/');
     
   }
 

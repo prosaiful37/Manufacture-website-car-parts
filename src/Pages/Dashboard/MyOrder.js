@@ -10,44 +10,39 @@ const MyOrder = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/orders?email=${user.email}`)
+      fetch(
+        `https://thawing-oasis-18375.herokuapp.com/orders?email=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => setOrders(data));
     }
   }, [user]);
 
-
-//   hanlde delete
+  //   hanlde delete
   const handleDelete = (id) => {
-     Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((proceed) => {
-        if (proceed.isConfirmed){
-            const url = `http://localhost:5000/orders/${id}`;
-            fetch(url, {
-              method: "DELETE",
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                console.log("data");
-                const remaning = orders.filter((order) => order._id !== id);
-                setOrders(remaning);
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                  )
-              });
-          }
-      })
-   
-   
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((proceed) => {
+      if (proceed.isConfirmed) {
+        const url = `https://thawing-oasis-18375.herokuapp.com/orders/${id}`;
+        fetch(url, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("data");
+            const remaning = orders.filter((order) => order._id !== id);
+            setOrders(remaning);
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          });
+      }
+    });
   };
 
   return (
@@ -78,21 +73,22 @@ const MyOrder = () => {
                   <img className="w-20 h-20" src={order.img} alt="" />
                 </td>
                 <td>
-                    {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className="btn btn-sm">Pay</button></Link>}
-                    {(order.price && order.paid) && <span className="btn btn-sm btn-seccess">Paid</span>}
-                    
-                      
+                  {order.price && !order.paid && (
+                    <Link to={`/dashboard/payment`}>
+                      <button className="btn btn-sm">Pay</button>
+                    </Link>
+                  )}
+                  {order.price && order.paid && (
+                    <span className="btn btn-sm btn-seccess">Paid</span>
+                  )}
                 </td>
-                <td> 
-                 
-                <button
+                <td>
+                  <button
                     onClick={() => handleDelete(order._id)}
                     class="btn btn-sm"
                   >
                     Delete
                   </button>
-                  
-                  
                 </td>
               </tr>
             ))}
