@@ -71,7 +71,8 @@ const CheckoutForm = ({ order }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form  > 
+        {/* onSubmit={handleSubmit} */}
         <CardElement
           options={{
             style: {

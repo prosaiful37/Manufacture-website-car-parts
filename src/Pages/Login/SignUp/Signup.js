@@ -34,7 +34,7 @@ const Signup = () => {
 
   }
 
-  if (token) {
+  if (user) {
         navigate('/');
     
   }

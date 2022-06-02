@@ -14,6 +14,7 @@ Car Parts Project [Live link](https://cart-parts-9dcb7.firebaseapp.com/).
    <li>react hooks fron integrate</li>
    <li>Use hero icon</li>
    <li>Sweet alert add</li>
+   <li>React Query use</li>
    <li>Toaster in react use the project</li>
    <li>website deploy firebase</li>
 

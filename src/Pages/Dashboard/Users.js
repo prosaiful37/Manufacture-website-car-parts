@@ -1,15 +1,36 @@
 import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import Loading from "../Shared/Loading/Loading";
+import UserRow from "./UserRow";
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    fetch("https://thawing-oasis-18375.herokuapp.com/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
+  // const [users, setUsers] = useState([]);
+  // useEffect(() => {
+  //   fetch("https://thawing-oasis-18375.herokuapp.com/users", {
+  //     method: "GET",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setUsers(data));
+  // }, []);
+
+  const { data: users, isLoading, refetch } = useQuery("users", () =>
+  fetch("https://thawing-oasis-18375.herokuapp.com/users", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      }
+    }).then((res) => res.json())
+  );
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="m-5">
-      <h2>All-Users : {users.length}</h2>
+      {/* <h2>All-Users : {users.length}</h2> */}
       <div class="overflow-x-auto">
         <table class="table  w-full">
           {/* <!-- head --> */}
@@ -22,17 +43,8 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
-              <tr>
-                <th>{index + 1}</th>
-                <td>{user.email}</td>
-                <td>
-                  <button class="btn btn-active btn-ghost">Make Admin</button>
-                </td>
-                <td>
-                  <button class="btn btn-active btn-ghost">Remove User</button>
-                </td>
-              </tr>
+            {users?.map((user) => (
+              <UserRow user={user}  refetch={refetch}></UserRow>
             ))}
           </tbody>
         </table>

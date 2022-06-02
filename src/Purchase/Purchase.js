@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../firebase.init";
+import Loading from "../Pages/Shared/Loading/Loading";
 
 const Purchase = () => {
   const [user] = useAuthState(auth);
   const { partsId } = useParams();
+
+
+
   const [part, setPart] = useState({});
   useEffect(() => {
     const url = `https://thawing-oasis-18375.herokuapp.com/parts/${partsId}`;
-    fetch(url)
+    fetch(`https://thawing-oasis-18375.herokuapp.com/parts/${partsId}`)
       .then((res) => res.json())
       .then((data) => setPart(data));
   }, [partsId]);
@@ -36,6 +41,8 @@ const Purchase = () => {
       email: user.email,
       address,
     };
+
+
 
     fetch("https://thawing-oasis-18375.herokuapp.com/orders", {
       method: "POST",

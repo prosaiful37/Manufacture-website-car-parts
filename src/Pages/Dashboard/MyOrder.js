@@ -73,14 +73,14 @@ const MyOrder = () => {
                   <img className="w-20 h-20" src={order.img} alt="" />
                 </td>
                 <td>
-                  {order.price && !order.paid && (
-                    <Link to={`/dashboard/payment`}>
+                  {(order.price && !order.paid) && 
+                    <Link to={`/dashboard/payment/${order._id}`}>
                       <button className="btn btn-sm">Pay</button>
                     </Link>
-                  )}
-                  {order.price && order.paid && (
+                  }
+                  {(order.price && order.paid) && 
                     <span className="btn btn-sm btn-seccess">Paid</span>
-                  )}
+                  }
                 </td>
                 <td>
                   <button
